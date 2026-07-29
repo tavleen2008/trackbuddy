@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Abhaya_Libre, Padauk } from "next/font/google";
+
+const abhaya = Abhaya_Libre({
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  variable: "--font-abhaya",
+});
+
+const padauk = Padauk({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-padauk",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +36,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
+    <html lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+     <body
+    className={`${abhaya.variable} ${padauk.variable} min-h-full flex flex-col`}>
+    {children}
+    </body> </html>
   );
 }
